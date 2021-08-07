@@ -47,14 +47,25 @@ button{
     font-weight: bold;
     cursor: pointer;
 }
-.continer{
+.continer2{
     width: 50%;
     height: 100vh;
     background: rgba(86, 86, 86, 0.3);
-    backdrop-filter: blur(10px);/*-------------------*/
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 9;
+
+}
+.continer{
+    width: 50%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
 }
 .info{
     width: 550px;
@@ -63,6 +74,7 @@ button{
     right: 0;
     top:50%;
     transform: translateY(-50%);
+    
 }
 .info h1{
     font-size: 60px;

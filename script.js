@@ -4,32 +4,46 @@ const thumbnail = document.getElementsByClassName("thumbnail");
 const hero = document.getElementById("hero");
 let i = 0;
 let backroungImg = new Array(
-    "images/bg1.png",
-    "images/bg2.png",
-    "images/bg3.png",
-    "images/bg4.png",
-    "images/bg5.png"
+    "Radiance_img/bg1.png",
+    "Radiance_img/bg2.png",
+    "Radiance_img/bg3.png",
+    "Radiance_img/bg4.png",
+    "Radiance_img/bg5.png"
 );
-console.log("this is it!!")
-console.log(next);
+
 next.onclick = function(){
-   if(i>backroungImg.length){
+    console.log(i);
+   if(i>=backroungImg.length || i<0){
     i=0;
    }
-    hero.style.backgroundImage= 'url("' +backroungImg[i++]+'")';
-    thumbnail[i+1].classList.add("active");
-    thumbnail[i].classList.remove("active");
+    hero.style.backgroundImage= 'url("'+backroungImg[i]+'")';
+    thumbnail[i].classList.add("active");
+    try{thumbnail[i-1].classList.remove("active");
+    }catch{
+        thumbnail[thumbnail.length-1].classList.remove("active");
+    }
+    
+    i++
    
 
 }
 prev.onclick = function(){
+    console.log(i);
     if(i<0){
-     i=backroungImg.length;
+     i=backroungImg.length-1;
     }
     
-    hero.style.backgroundImage= 'url("' +backroungImg[i--]+'")';
-    thumbnail[i-1].classList.add("active");
-    thumbnail[i].classList.remove("active");
+    try{
+        hero.style.backgroundImage= 'url("' +backroungImg[i]+'")';
+        thumbnail[i].classList.add("active");
+    }catch{
+        hero.style.backgroundImage= 'url("' +backroungImg.length-1+'")'; 
+        thumbnail[0].classList.add("active");
+    }
     
- 
+    try{thumbnail[i+1].classList.remove("active");
+    }catch{
+    thumbnail[0].classList.remove("active");
+    }
+    i--;
  }
